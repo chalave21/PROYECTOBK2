@@ -1,0 +1,18 @@
+[
+  {
+    "id": 2,
+    "title": "asd",
+    "description": "asdsd",
+    "price": 123,
+    "code": "124",
+    "stock": 11
+  },
+  {
+    "id": 3,
+    "title": "asd",
+    "description": "asdsd",
+    "price": 123,
+    "code": "125",
+    "stock": 11
+  }
+]
