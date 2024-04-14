@@ -4,10 +4,27 @@ class ProductManager {
     this.path = "data.txt";
   }
 
-  async addProduct(title, description, price, thumbnail, code, stock) {
+  async addProduct({
+    title,
+    description,
+    price,
+    thumbnails,
+    code,
+    stock,
+    status,
+    category,
+  }) {
     try {
       // Validación de campos obligatorios
-      if (!title || !description || !price || !thumbnail || !code || !stock) {
+      if (
+        !title ||
+        !description ||
+        !price ||
+        !code ||
+        !stock ||
+        !status ||
+        !category
+      ) {
         console.log("!!!!!!!!!!!!!!! TODOS LOS CAMPOS SON OBLIGATORIOS");
         return;
       }
@@ -39,6 +56,9 @@ class ProductManager {
         price: price,
         code: code,
         stock: stock,
+        status: status,
+        category: category,
+        thumbnails: thumbnails ? thumbnails : [],
       };
 
       // Agrega el nuevo producto al array de productos
