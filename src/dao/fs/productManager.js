@@ -1,7 +1,7 @@
 const fs = require("fs");
 class ProductManager {
   constructor() {
-    this.path = "data.txt";
+    this.path = "productos.json";
   }
 
   async addProduct({
@@ -103,6 +103,7 @@ class ProductManager {
       const product = products.find((p) => p.id === id);
 
       if (product) {
+        console.log(product);
         return product;
       } else {
         return "PRODUCT NOT FOUND";

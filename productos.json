@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "title": "Producto 1",
+    "description": "Descripción del producto 1",
+    "price": 125,
+    "code": "ABC123",
+    "stock": 20,
+    "status": true,
+    "category": "Categoría 1",
+    "thumbnails": [
+      "thumbnail1.jpg",
+      "thumbnail2.jpg"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Producto 2",
+    "description": "Descripción del producto 2",
+    "price": 150,
+    "code": "DEF456",
+    "stock": 15,
+    "status": true,
+    "category": "Categoría 2",
+    "thumbnails": [
+      "thumbnail3.jpg",
+      "thumbnail4.jpg"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Producto 3",
+    "description": "Descripción del producto 3",
+    "price": 200,
+    "code": "GHI789",
+    "stock": 30,
+    "status": true,
+    "category": "Categoría 3",
+    "thumbnails": [
+      "thumbnail5.jpg",
+      "thumbnail6.jpg"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Producto 4",
+    "description": "Descripción del producto 4",
+    "price": 120,
+    "code": "JKL012",
+    "stock": 25,
+    "status": true,
+    "category": "Categoría 4",
+    "thumbnails": [
+      "thumbnail7.jpg",
+      "thumbnail8.jpg"
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Producto 5",
+    "description": "Descripción del producto 5",
+    "price": 180,
+    "code": "MNO345",
+    "stock": 18,
+    "status": true,
+    "category": "Categoría 5",
+    "thumbnails": [
+      "thumbnail9.jpg",
+      "thumbnail10.jpg"
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Producto 6",
+    "description": "Descripción del producto 6",
+    "price": 90,
+    "code": "PQR678",
+    "stock": 22,
+    "status": true,
+    "category": "Categoría 1",
+    "thumbnails": [
+      "thumbnail11.jpg",
+      "thumbnail12.jpg"
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Producto 7",
+    "description": "Descripción del producto 7",
+    "price": 170,
+    "code": "STU901",
+    "stock": 28,
+    "status": true,
+    "category": "Categoría 2",
+    "thumbnails": [
+      "thumbnail13.jpg",
+      "thumbnail14.jpg"
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Producto 8",
+    "description": "Descripción del producto 8",
+    "price": 210,
+    "code": "VWX234",
+    "stock": 32,
+    "status": true,
+    "category": "Categoría 3",
+    "thumbnails": [
+      "thumbnail15.jpg",
+      "thumbnail16.jpg"
+    ]
+  },
+  {
+    "id": 9,
+    "title": "Producto 9",
+    "description": "Descripción del producto 9",
+    "price": 130,
+    "code": "YZA567",
+    "stock": 19,
+    "status": true,
+    "category": "Categoría 4",
+    "thumbnails": [
+      "thumbnail17.jpg",
+      "thumbnail18.jpg"
+    ]
+  },
+  {
+    "id": 10,
+    "title": "Producto 10",
+    "description": "Descripción del producto 10",
+    "price": 160,
+    "code": "BCD890",
+    "stock": 24,
+    "status": true,
+    "category": "Categoría 5",
+    "thumbnails": [
+      "thumbnail19.jpg",
+      "thumbnail20.jpg"
+    ]
+  }
+]
