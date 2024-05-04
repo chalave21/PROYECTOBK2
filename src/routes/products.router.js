@@ -1,66 +1,109 @@
 const express = require("express");
 const router = express.Router();
-const ProductManager = require("../dao/fs/productManager.js");
+const ProductManager = require("../dao/da/productManager.db.js");
 const productManager = new ProductManager();
 router.get("/api/products", async (req, res) => {
   try {
-    const { limit } = req.query;
-    const products = await productManager.getProducts();
-    if (limit) {
-      const productsFilter = products.slice(0, limit);
-      res.status(200).send({ productsFilter });
-      return;
-    }
-    res.status(200).send({ products });
-    return;
+    const { limit = 10, page = 1, sort, query } = req.query;
+
+    const productos = await productManager.getProducts({
+      limit: parseInt(limit),
+      page: parseInt(page),
+      sort,
+      query,
+    });
+
+    res.json({
+      status: "success",
+      payload: productos,
+      totalPages: productos.totalPages,
+      prevPage: productos.prevPage,
+      nextPage: productos.nextPage,
+      page: productos.page,
+      hasPrevPage: productos.hasPrevPage,
+      hasNextPage: productos.hasNextPage,
+      prevLink: productos.hasPrevPage
+        ? `/api/products?limit=${limit}&page=${productos.prevPage}&sort=${sort}&query=${query}`
+        : null,
+      nextLink: productos.hasNextPage
+        ? `/api/products?limit=${limit}&page=${productos.nextPage}&sort=${sort}&query=${query}`
+        : null,
+    });
   } catch (error) {
-    console.log("!!!!!!!!!!!!!Error en la ruta GET api/products");
-    console.log(error);
+    console.error("Error al obtener productos", error);
+    res.status(500).json({
+      status: "error",
+      error: "Error interno del servidor",
+    });
   }
 });
 
 router.get("/api/products/:pid", async (req, res) => {
+  const id = req.params.pid;
+
   try {
-    const { pid } = req.params;
-    const product = await productManager.getProductById(+pid);
-    res.status(200).send(product);
+    const producto = await productManager.getProductById(id);
+    if (!producto) {
+      return res.json({
+        error: "Producto no encontrado",
+      });
+    }
+
+    res.json(producto);
   } catch (error) {
-    console.log("!!!! error en la ruta get api/products/:pid", error);
-    res.status(500).send("Algo salio mal...");
+    console.error("Error al obtener producto", error);
+    res.status(500).json({
+      error: "Error interno del servidor",
+    });
   }
 });
 
 router.post("/api/products", async (req, res) => {
+  const nuevoProducto = req.body;
+
   try {
-    const getProduct = req.body;
-    console.log(getProduct);
-    await productManager.addProduct(getProduct);
-    res.status(200).send("Producto agregado con excito");
+    await productManager.addProduct(nuevoProducto);
+    res.status(201).json({
+      message: "Producto agregado exitosamente",
+    });
   } catch (error) {
-    console.log("!!!! error en la ruta post api/prodcts", error);
-    res.status(500).send("Algo salio mal...");
+    console.error("Error al agregar producto", error);
+    res.status(500).json({
+      error: "Error interno del servidor",
+    });
   }
 });
 
 router.put("/api/products/:pid", async (req, res) => {
+  const id = req.params.pid;
+  const productoActualizado = req.body;
+
   try {
-    let pId = req.params.pid;
-    let product = req.body;
-    await productManager.updateProduct(+pId, product);
-    res.status(200).send("producto actualizado correctamente");
+    await productManager.updateProduct(id, productoActualizado);
+    res.json({
+      message: "Producto actualizado exitosamente",
+    });
   } catch (error) {
-    console.log("error en ruta put/api/products", error);
+    console.error("Error al actualizar producto", error);
+    res.status(500).json({
+      error: "Error interno del servidor",
+    });
   }
 });
 
 router.delete("/api/products/:pid", async (req, res) => {
+  const id = req.params.pid;
+
   try {
-    let pId = req.params.pid;
-    await productManager.deleteProduct(+pId);
-    res.status(200).send("producto eliminado con exito.");
+    await productManager.deleteProduct(id);
+    res.json({
+      message: "Producto eliminado exitosamente",
+    });
   } catch (error) {
-    console.log("!!!error en ruta delete api/products/:pid", error);
-    res.status(500).send("Algo salio mal...");
+    console.error("Error al eliminar producto", error);
+    res.status(500).json({
+      error: "Error interno del servidor",
+    });
   }
 });
 module.exports = router;
